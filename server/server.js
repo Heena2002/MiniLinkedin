@@ -8,9 +8,20 @@ const postRoutes = require("./routes/postRoutes");
 const app = express();
 dotenv.config();
 
-// ✅ Enable CORS with specific origin (React app)
+// ✅ Allow CORS for localhost (dev) and Netlify (prod)
+const allowedOrigins = [
+  "http://localhost:3000",
+  "https://dainty-platypus-a47cc4.netlify.app"
+];
+
 app.use(cors({
-  origin: "http://localhost:3000", // React app origin
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("❌ Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
