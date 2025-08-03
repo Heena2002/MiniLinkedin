@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Create Axios instance
 const instance = axios.create({
-  baseURL: 'http://localhost:5000', // Backend URL
+  baseURL: 'https://minilinkedin-o9qv.onrender.com', // Backend URL
   headers: {
     'Content-Type': 'application/json',
     Accept: 'application/json',
