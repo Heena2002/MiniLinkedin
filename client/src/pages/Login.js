@@ -1,7 +1,7 @@
 // ✅ src/pages/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from '../api/axios'; // custom axios
+import axios from '../api/axios';
 
 function Login() {
   const [email, setEmail] = useState('');
@@ -18,20 +18,20 @@ function Login() {
 
       console.log("📦 Axios Login Response:", res.data);
 
-      // ✅ Store correct user format
       const user = res.data.user;
       const fullUser = {
-        id: user._id, // fix here
+        _id: user._id,
         name: user.name,
         email: user.email,
         bio: user.bio
       };
+
       localStorage.setItem('token', res.data.token);
       localStorage.setItem('user', JSON.stringify(fullUser));
 
       alert('✅ Login successful!');
       setMessage('✅ Login successful! Redirecting...');
-      setTimeout(() => navigate(`/profile/${fullUser.id}`), 1500);
+      setTimeout(() => navigate(`/profile/${fullUser._id}`), 1500); // ✅ fixed here
 
     } catch (error) {
       console.error("❌ Axios Login Error:", error);

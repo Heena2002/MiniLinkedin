@@ -14,6 +14,6 @@ router.post("/create", auth, createPost);
 router.get("/", getAllPosts);
 
 // Get posts by a specific user (protected)
-router.get("/user/:userId", auth, getPostsByUserId);
+router.get("/user/:id", auth, getPostsByUserId);
 
 module.exports = router;

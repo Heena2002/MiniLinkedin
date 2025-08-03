@@ -8,8 +8,8 @@ function Navbar() {
 
   useEffect(() => {
     const storedUser = JSON.parse(localStorage.getItem("user"));
-    if (storedUser?.id) {
-      setUserId(storedUser.id); // ✅ fixed
+    if (storedUser?._id) {
+      setUserId(storedUser._id);
     }
   }, []);
 

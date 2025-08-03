@@ -19,7 +19,7 @@ function CreatePost() {
       console.log("✅ Post created:", res.data);
 
       setMessage("✅ Post created successfully!");
-      setTimeout(() => navigate(`/profile/${user.id}`), 1000); // ✅ use correct ID
+      setTimeout(() => navigate(`/profile/${user._id}`), 1000); // ✅ use correct ID
 
     } catch (err) {
       console.error("❌ Post Create Error:", err);

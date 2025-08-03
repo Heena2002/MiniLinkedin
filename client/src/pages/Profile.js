@@ -17,7 +17,12 @@ function Profile() {
   useEffect(() => {
     const fetchUserPosts = async () => {
       try {
-        const res = await axios.get(`/api/posts/user/${id}`);
+        const token = localStorage.getItem('token');
+        const res = await axios.get(`/api/posts/user/${id}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
         setPosts(res.data.reverse());
       } catch (err) {
         console.error("❌ Profile Fetch Error:", err);

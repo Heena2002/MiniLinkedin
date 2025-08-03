@@ -37,8 +37,8 @@ exports.getAllPosts = async (req, res) => {
 
 exports.getPostsByUserId = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const posts = await Post.find({ author: userId }).populate("author", "name email");
+    const { id } = req.params;
+    const posts = await Post.find({ author: id }).populate("author", "name email");
     res.status(200).json(posts);
   } catch (error) {
     res.status(500).json({ message: "Error fetching user's posts", error: error.message });
